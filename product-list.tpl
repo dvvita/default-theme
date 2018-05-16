@@ -66,10 +66,20 @@
 						{if (!$PS_CATALOG_MODE && ((isset($product.show_price) && $product.show_price) || (isset($product.available_for_order) && $product.available_for_order)))}
 							<div class="content_price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
 								{if isset($product.show_price) && $product.show_price && !isset($restricted_country_mode)}
-									<span itemprop="price" class="price product-price">
+                                
+                                <span style="color:#FF0011; font-size:22px">{convertPrice price=$product.price_tax_exc} sin I.V.A</span>
+                                <br />
+                                    
+                                    <span class="price product-price" style=" font-size:18px">
 										{hook h="displayProductPriceBlock" product=$product type="before_price"}
-										{if !$priceDisplay}{convertPrice price=$product.price}{else}{convertPrice price=$product.price_tax_exc}{/if}
+										{if !$priceDisplay}{convertPrice price=$product.price}{else}{convertPrice price=$product.price_tax_exc}{/if} con I.V.A
 									</span>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
 									<meta itemprop="priceCurrency" content="{$currency->iso_code}" />
 									{if $product.price_without_reduction > 0 && isset($product.specific_prices) && $product.specific_prices && isset($product.specific_prices.reduction) && $product.specific_prices.reduction > 0}
 										{hook h="displayProductPriceBlock" product=$product type="old_price"}
@@ -131,9 +141,13 @@
 					<div class="content_price">
 						{if isset($product.show_price) && $product.show_price && !isset($restricted_country_mode)}
 							{hook h="displayProductPriceBlock" product=$product type='before_price'}
-							<span class="price product-price">
-								{if !$priceDisplay}{convertPrice price=$product.price}{else}{convertPrice price=$product.price_tax_exc}{/if}
+							
+                            <span style="color:#FF0011; font-size:22px">{convertPrice price=$product.price_tax_exc} sin I.V.A</span>
+                            <br />
+                            <span class="price product-price" style=" font-size:18px">
+								{if !$priceDisplay}{convertPrice price=$product.price}{else}{convertPrice price=$product.price_tax_exc}{/if} con I.V.A
 							</span>
+                            
 							{if $product.price_without_reduction > 0 && isset($product.specific_prices) && $product.specific_prices && isset($product.specific_prices.reduction) && $product.specific_prices.reduction > 0}
 								{hook h="displayProductPriceBlock" product=$product type="old_price"}
 								<span class="old-price product-price">

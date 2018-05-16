@@ -652,6 +652,7 @@ function updatePrice()
 		priceWithDiscountsWithTax = priceWithDiscountsWithTax + default_eco_tax * (1 + ecotaxTax_rate / 100);
 		basePriceWithTax = basePriceWithTax + default_eco_tax * (1 + ecotaxTax_rate / 100);
 		basePriceWithoutTax = basePriceWithoutTax + default_eco_tax * (1 + ecotaxTax_rate / 100);
+		var priceWithDiscount_WithourTax = priceWithDiscountsDisplay / (taxRate/100 + 1); 
 	}
 
 	// Apply specific price (discount)
@@ -663,6 +664,7 @@ function updatePrice()
 		{
 			if (typeof combination.specific_price.reduction_tax !== 'undefined' && combination.specific_price.reduction_tax === "0")
 			{
+				$('#pretaxe_price_display').text(formatCurrency(priceWithDiscount_WithourTax * currencyRate, currencyFormat, currencySign, currencyBlank)); 
 				var reduction = combination.specific_price.reduction;
 				if (combination.specific_price.id_currency == 0)
 					reduction = reduction * currencyRate * (1 - groupReduction);
