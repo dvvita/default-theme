@@ -50,7 +50,7 @@
 	</ul>
 {else}
 	{include file="$tpl_dir./errors.tpl"}
-	<form action="{$request_uri}" method="post" class="contact-form-box" enctype="multipart/form-data">
+	<form action="{$request_uri}" method="post" class="contact-form-box" id="formcontacto" name="formcontacto" enctype="multipart/form-data">
 		<fieldset>
 			<h3 class="page-subheading">{l s='send a message'}</h3>
 			<div class="clearfix">
@@ -145,6 +145,15 @@
 					</div>
 				</div>
 			</div>
+            <p class="checkbox" id="security_informations">
+
+<input id="acepta_lopd_form" type="checkbox" value="1" {if isset($smarty.post.acepta_lopd_form) AND $smarty.post.acepta_lopd_form == 1}checked="checked"{/if} name="acepta_lopd_form">
+
+<label for="acepta_lopd_form">He leído y acepto los </label> <a href="content/3-terminos-y-condiciones-de-uso" target="_blank" class="iframe">{l s='Términos y
+
+Condiciones de Privacidad'}</a>
+
+</p>
 			<div class="submit">
 				<input type="text" name="url" value="" class="hidden" />
 				<input type="hidden" name="contactKey" value="{$contactKey}" />
@@ -155,3 +164,36 @@
 {/if}
 {addJsDefL name='contact_fileDefaultHtml'}{l s='No file selected' js=1}{/addJsDefL}
 {addJsDefL name='contact_fileButtonHtml'}{l s='Choose File' js=1}{/addJsDefL}
+{literal}
+
+<script type="text/javascript">
+
+$('document').ready(function() {
+
+// desactivo boton envio
+
+$('#formcontacto').submit(function() {
+
+if ($("#acepta_lopd_form").is(":checked")) {
+
+$('#submitMessage').hide()
+
+return true;
+
+} else {
+
+alert ("Acepte los Términos y Condiciones de Privacidad , por favor haga clic en la casilla de abajo.");
+
+$('#submitMessage').show()
+
+return false;
+
+}
+
+});
+
+});
+
+</script>
+
+{/literal}

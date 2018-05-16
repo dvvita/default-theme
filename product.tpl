@@ -261,10 +261,30 @@
 								<p class="our_price_display" itemprop="offers" itemscope itemtype="https://schema.org/Offer">{strip}
 									{if $product->quantity > 0}<link itemprop="availability" href="https://schema.org/InStock"/>{/if}
 									{if $priceDisplay >= 0 && $priceDisplay <= 2}
-										<span id="our_price_display" class="price" itemprop="price" content="{$productPrice}">{convertPrice price=$productPrice|floatval}</span>
+                                    
+                                    
+                                    	<span id="our_price_display pretaxe_price_display" class="price" itemprop="price" content="{$productPrice}" style="color:#F00">{convertPrice price=$product->getPrice(false, $smarty.const.NULL, 2)} </span><span style="color:#F00">{l s='tax excl.'}</span>
+                                    
+                                    
+                                    <br />
+										<span id="our_price_display" style="font-size:25px" class="price" itemprop="price" content="{$productPrice}">{convertPrice price=$productPrice|floatval}</span>
 										{if $tax_enabled  && ((isset($display_tax_label) && $display_tax_label == 1) || !isset($display_tax_label))}
 											{if $priceDisplay == 1} {l s='tax excl.'}{else} {l s='tax incl.'}{/if}
 										{/if}
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
 										<meta itemprop="priceCurrency" content="{$currency->iso_code}" />
 										{hook h="displayProductPriceBlock" product=$product type="price"}
 									{/if}

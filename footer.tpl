@@ -23,7 +23,9 @@
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 {if !isset($content_only) || !$content_only}
+					{if $page_name !='index'}
 					</div><!-- #center_column -->
+                    {/if}
 					{if isset($right_column_size) && !empty($right_column_size)}
 						<div id="right_column" class="col-xs-12 col-sm-{$right_column_size|intval} column">{$HOOK_RIGHT_COLUMN}</div>
 					{/if}
@@ -41,5 +43,17 @@
 		</div><!-- #page -->
 {/if}
 {include file="$tpl_dir./global.tpl"}
+{literal}
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-47515248-23', 'molicen.es');
+  ga('send', 'pageview');
+
+</script>
+{/literal}
 	</body>
 </html>
