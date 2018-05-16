@@ -126,7 +126,7 @@
 	{if $display_poweredby}
 	<section class="bottom-footer col-xs-12">
 		<div>
-			Desarrollado por <a href="http://geswebs.com" target="_blank">Geswebs</a>
+			© Molicen, S.L.
 		</div>
 	</section>
 	{/if}
